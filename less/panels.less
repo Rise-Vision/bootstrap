@@ -15,6 +15,7 @@
 // Panel contents
 .panel-body {
   padding: @panel-body-padding;
+  background-color: @panel-body-bg;
   &:extend(.clearfix all);
 }
 
@@ -222,6 +223,9 @@
 
 // Contextual variations
 .panel-default {
+  > .panel-heading {
+    font-weight: @panel-default-font-weight;
+  }
   .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
 }
 .panel-primary {

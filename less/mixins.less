@@ -393,9 +393,9 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-.nav-divider(@color: #e5e5e5) {
+.nav-divider(@color: #e5e5e5; @margin-top: ((@line-height-computed / 2) - 1)) {
   height: 1px;
-  margin: ((@line-height-computed / 2) - 1) 0;
+  margin: @margin-top 0;
   overflow: hidden;
   background-color: @color;
 }
@@ -423,7 +423,7 @@
 
 // Alerts
 // -------------------------
-.alert-variant(@background; @border; @text-color) {
+.alert-variant(@background; @border; @text-color; @link-text-color: darken(@text-color, 10%)) {
   background-color: @background;
   border-color: @border;
   color: @text-color;
@@ -432,7 +432,7 @@
     border-top-color: darken(@border, 5%);
   }
   .alert-link {
-    color: darken(@text-color, 10%);
+    color: @link-text-color;
   }
 }
 
@@ -496,7 +496,7 @@
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
-.button-variant(@color; @background; @border) {
+.button-variant(@color; @background; @border; @border-active: darken(@border, 12%); @bg-active: darken(@background, 8%); @border-disabled: @border) {
   color: @color;
   background-color: @background;
   border-color: @border;
@@ -507,8 +507,8 @@
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
-        border-color: darken(@border, 12%);
+    background-color: @bg-active;
+        border-color: @border-active;
   }
   &:active,
   &.active,
@@ -524,7 +524,7 @@
     &:active,
     &.active {
       background-color: @background;
-          border-color: @border;
+          border-color: @border-disabled;
     }
   }
 
@@ -569,12 +569,12 @@
 
 // Labels
 // -------------------------
-.label-variant(@color) {
+.label-variant(@color, @bg-color-hover: darken(@color, 10%)) {
   background-color: @color;
   &[href] {
     &:hover,
     &:focus {
-      background-color: darken(@color, 10%);
+      background-color: @bg-color-hover;
     }
   }
 }

@@ -165,7 +165,7 @@
   @media (min-width: @grid-float-breakpoint) {
     .navbar > .container &,
     .navbar > .container-fluid & {
-      margin-left: -@navbar-padding-horizontal;
+      margin-left: 0;
     }
   }
 }
@@ -185,7 +185,7 @@
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-  border-radius: @border-radius-base;
+  border-radius: @border-radius-base2;
 
   // We remove the `outline` here, but later compensate by attaching `:hover`
   // styles to `:focus`.
@@ -399,8 +399,9 @@
 
       &:hover,
       &:focus {
-        color: @navbar-default-link-hover-color;
+        color: @navbar-default-li-link-hover-color;
         background-color: @navbar-default-link-hover-bg;
+        border:1px solid #e5e5e5;
       }
     }
     > .active > a {
@@ -444,8 +445,9 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-default-link-active-bg;
-        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-hover-bg;
+        color: #2d60ad;
+        border-color: @navbar-default-link-border-color;
       }
     }
 
@@ -453,10 +455,10 @@
       // Dropdowns get custom display when collapsed
       .open .dropdown-menu {
         > li > a {
-          color: @navbar-default-link-color;
+          color: @navbar-default-dropdown-link-color;
           &:hover,
           &:focus {
-            color: @navbar-default-link-hover-color;
+            color: @navbar-default-dropdown-link-color;
             background-color: @navbar-default-link-hover-bg;
           }
         }
@@ -464,8 +466,8 @@
           &,
           &:hover,
           &:focus {
-            color: @navbar-default-link-active-color;
-            background-color: @navbar-default-link-active-bg;
+            color: @navbar-default-dropdown-link-color;
+            background-color: @navbar-default-link-hover-bg;
           }
         }
         > .disabled > a {
